@@ -1,0 +1,2 @@
+Next value    : 10 20 30 40 50 
+previous value: 50 40 30 20 10 

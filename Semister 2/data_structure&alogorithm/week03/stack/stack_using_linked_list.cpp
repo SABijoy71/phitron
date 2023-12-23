@@ -4,22 +4,22 @@ using namespace std;
 class myStack{
     public:
 
-    list<int> l;
+    vector<int> v;
 
     void push(int val){
-        l.push_back(val);
+        v.push_back(val);
     }
     void pop(){
-        l.pop_back();
+        v.pop_back();
     }
     int top(){
-        return l.back();
+        return v.back();
     }
     int sizeV(){
-        return l.size();
+        return v.size();
     }
     bool isEmpty(){
-        if(l.empty()){ // it returns true
+        if(v.empty() == true){
             return true;
         }else{
             return false;
@@ -42,7 +42,7 @@ int main(){
         st.push(x);
     }
 
-    while(!st.isEmpty()){ // it return false;
+    while(!st.isEmpty()){
         cout << st.top() << endl;
         st.pop();   
     }

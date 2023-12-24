@@ -1,25 +1,53 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+class Node{
+    public:
+    int val;
+    Node* prev;
+    Node* next;
+    Node(int val){
+        this->val = val;
+        this->prev = NULL;
+        this->next = NULL;
+    }
+};
+
 class myStack{
     public:
 
-    vector<int> v;
-
+    Node* head = NULL;
+    Node* tail = NULL;
+    int count = 0;
     void push(int val){
-        v.push_back(val);
+        Node* newNode = new Node(val);
+        count++;
+        if(head == NULL){
+            head = newNode;
+            tail = newNode;
+            return;
+        }
+        tail->next = newNode;
+        newNode->prev = tail;
+        tail = tail->next;
     }
     void pop(){
-        v.pop_back();
+        count--;
+        Node* deleteNode = tail;
+        tail = tail->prev;
+        if(tail == NULL){
+            head = NULL;
+        }
+        delete deleteNode;
     }
     int top(){
-        return v.back();
+        return tail->val;
     }
-    int sizeV(){
-        return v.size();
+    int size(){
+        return count;
     }
-    bool isEmpty(){
-        if(v.empty() == true){
+    bool empty(){
+        if(count == 0){
             return true;
         }else{
             return false;
@@ -31,22 +59,25 @@ class myStack{
 int main(){
 
     myStack st;
-
+    
     while (true)
     {
-        int x;
-        cin >> x;
-        if(x == -1){
+        int val;
+        cin >> val;
+        if(val == -1){
             break;
         }
-        st.push(x);
+        st.push(val);
     }
 
-    while(!st.isEmpty()){
+    while(!st.empty()){
         cout << st.top() << endl;
-        st.pop();   
+        st.pop();
     }
-    
+
+    // cout << st.top() << endl;
+    // st.pop();
+    // cout << st.top() << endl;
     
     return 0;
 }

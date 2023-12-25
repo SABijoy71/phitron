@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-    stack<int> st;
+    stack<int> st; //built in stack library/class
     int valSize;
     cin >> valSize;
     for(int i = 1; i <= valSize; i++){
@@ -11,15 +11,13 @@ int main(){
         st.push(val);
     }
 
-    if(!st.empty()){
+    cout << "size: " << st.size() << endl;
+
+    while (!st.empty())
+    {
+        cout << st.top() << endl;
         st.pop();
     }
-
-    if(!st.empty()){
-        cout << st.top() << endl;
-    }else{
-        cout << "Stack is empty" << endl;
-    }
-
+    
     return 0;
 }

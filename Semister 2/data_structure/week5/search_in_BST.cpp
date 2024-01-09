@@ -35,7 +35,7 @@ Node* inputTree(){
         Node* p = q.front();
         q.pop();
 
-        int l,r;
+        int l,r; 
         cin >> l >> r;
         Node* myLeft;
         Node* myRight;
@@ -62,8 +62,7 @@ Node* inputTree(){
     }
     return root;
 }
-
-void levelOrder(Node* root){
+void print_level_order(Node* root){
     if(root == NULL){
         cout << "empty" << endl;
         return;
@@ -86,10 +85,26 @@ void levelOrder(Node* root){
     }
 }
 
+bool binary_search_tree(Node* root, int val){
+    if(root == NULL) return false;
+    if(root->val == val) return true;
+    if(val < root->val){
+        return binary_search_tree(root->left, val);
+    }else{
+        return binary_search_tree(root->right, val);
+    }
+}
+
 int main(){
 
     Node* root = inputTree();
-    levelOrder(root);
+    print_level_order(root);
+    cout << endl;
+    if(binary_search_tree(root, 6)){
+        cout << "Found" << endl;
+    }else{
+        cout << "Not found" << endl;
+    }
 
     return 0;
 }

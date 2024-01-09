@@ -35,7 +35,7 @@ Node* inputTree(){
         Node* p = q.front();
         q.pop();
 
-        int l,r;
+        int l,r; 
         cin >> l >> r;
         Node* myLeft;
         Node* myRight;
@@ -62,8 +62,7 @@ Node* inputTree(){
     }
     return root;
 }
-
-void levelOrder(Node* root){
+void print_level_order(Node* root){
     if(root == NULL){
         cout << "empty" << endl;
         return;
@@ -86,10 +85,40 @@ void levelOrder(Node* root){
     }
 }
 
+void insert(Node* &root, int val){
+    if(root == NULL){
+        root = new Node(val);
+        return;
+    }
+
+    if(val < root->val){
+        if(root->left == NULL){
+            root->left = new Node(val);
+        }else{
+            insert(root->left, val);
+        }
+    }else{
+        if(root->right == NULL){
+            root->right = new Node(val);
+        }else{
+            insert(root->right, val);
+        }
+    }
+
+}
+
 int main(){
 
     Node* root = inputTree();
-    levelOrder(root);
+    cout << "before added value: ";
+    print_level_order(root);
+    cout << endl;
+    
+    int val;
+    cin >> val;
+    insert(root,val);
+    cout << "after added value: ";
+    print_level_order(root);
 
     return 0;
 }

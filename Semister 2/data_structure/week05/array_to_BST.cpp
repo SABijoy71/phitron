@@ -13,7 +13,7 @@ class Node{
     }
 };
 
-void levelOrder(Node* root){
+void print_level_order(Node* root){
     if(root == NULL){
         cout << "empty" << endl;
         return;
@@ -60,7 +60,8 @@ int main(){
         cin >> ara[i];
     }
 
-    Node* root = convert(ara,0,size-1);    
+    Node* root = convert(ara,0,size-1);
+    print_level_order(root);
 
     return 0;
 }
